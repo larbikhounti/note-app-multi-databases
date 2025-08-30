@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
+use App\Models\Company;
 use Stancl\Tenancy\Database\Models\Domain;
 use Stancl\Tenancy\Database\Models\Tenant;
 
 return [
-    'tenant_model' => Tenant::class,
+    'tenant_model' => Company::class,
     'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
 
     'domain_model' => Domain::class,
@@ -19,6 +20,7 @@ return [
     'central_domains' => [
         '127.0.0.1',
         'localhost',
+        'laravel.test'
     ],
 
     /**
