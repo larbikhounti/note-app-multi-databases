@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use AuthService;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Auth\AuthService;
 use Illuminate\Http\Request;
 
-class AuthController
+class AuthController extends Controller
 {
     protected $authService;
 
