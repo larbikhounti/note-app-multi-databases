@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
-use App\Http\services\CompanyService;
+use App\Http\Controllers\Controller;
+use App\Http\Services\Company\CompanyService;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller

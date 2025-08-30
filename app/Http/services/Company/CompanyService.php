@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\services;
+namespace App\Http\Services\Company;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
-class CompanyService
+class CompanyService 
 {
     public function createCompany(array $data)
     {
@@ -32,7 +32,7 @@ class CompanyService
 
 
             Log::Error('Error creating tenant: ' . $th->getMessage());
-            return response()->json(['error' => 'Failed to create tenant: '], 500);
+            return response()->json(['error' => 'Failed to create tenant: ' . $th->getMessage()], 500);
         }
     }
 }
