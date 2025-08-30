@@ -2,30 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\services\TenantService;
+use App\Http\services\CompanyService;
 use Illuminate\Http\Request;
 
-class TenantController extends Controller
+class CompanyController extends Controller
 {
-    protected $tenantService;
+    protected $companyService;
 
-    public function __construct(TenantService $tenantService)
+    public function __construct(CompanyService $companyService)
     {
-        $this->tenantService = $tenantService;
+        $this->companyService = $companyService;
     }
 
     public function create(Request $request)
     {
-        // Validate and create the tenant
+        // Validate and create the company
         $data = $request->validate([
-            'id' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-             'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|max:255',
         ]);
-       //dd($data);
 
-        $tenant = $this->tenantService->createTenant($data);
-
-      return response()->json($tenant, 201);
+       return $this->companyService->createCompany($data);
     }
 }
