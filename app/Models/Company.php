@@ -14,7 +14,16 @@ class Company extends BaseTenant implements TenantWithDatabase
 
     protected $fillable = [
         'id',
-        // 'name',
-        // 'email',
+        'name',
+        'email',
     ];
+
+    public static function getCustomColumns(): array
+    {
+        return [
+            'id',
+            'name',
+            'email',
+        ];
+    }
 }
