@@ -1,4 +1,7 @@
-## laravel Sail
+## laravel Sail 
+
+
+## grand databases privileges to sail user 
 To allow the `sail` user to perform create, read, update, and delete operations in all tenant databases, grant the necessary privileges by running the following SQL statements:
 
 1 :
