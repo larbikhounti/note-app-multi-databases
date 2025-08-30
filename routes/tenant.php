@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Middleware\AuthMiddleware;
+use App\Http\Controllers\Note\NoteController;
+use Illuminate\Database\Eloquent\Attributes\Initialize;
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\InitializeTenancyBySubdomain;
@@ -38,6 +40,12 @@ Route::prefix('api')->middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
+    Route::middleware(['auth:sanctum'])->group(function () {
+        Route::put('/notes/{id}', [NoteController::class, 'update']);
+        Route::delete('/notes/{id}', [NoteController::class, 'destroy']);
+        Route::get('/notes', [NoteController::class, 'index']);
+        Route::post('/notes', [NoteController::class, 'store']);
+    });
 });
 
 
