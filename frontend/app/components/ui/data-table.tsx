@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/table"
 import { DeleteNote } from "@/notes/actions/delete-note"
 import { AddNote } from "@/notes/actions/add-note"
+import { UpdateNote } from "@/notes/actions/update-note"
 
 
 
@@ -116,6 +117,18 @@ export const columns: ColumnDef<Note>[] = [
       return (
         <div className="text-right">
           <DeleteNote noteId={row.getValue("id")} />
+        </div>
+      )
+    },
+  },
+  {
+    id: "update",
+    header: () => <div className="text-right">Actions</div>,
+    cell: ({ row }) => {
+      const id = parseInt(row.getValue("id"), 10);
+      return (
+        <div className="text-right">
+          <UpdateNote id={id} />
         </div>
       )
     },
