@@ -8,13 +8,13 @@ note app separated  by databases aka (multi-tenancy)
 
 ## app story 
 
-1 - user create company by provider name and email
+1 - user create company by providing name and email
 
 2 - the system will create a dedicated database for the company
 
 3 - the system will create users and notes by default for testing
 
-4 = you will redirected to the subdomain for you company
+4 = you will be redirected to the subdomain for your company
 
 5 - you will be asked to login with one of the users 
 
