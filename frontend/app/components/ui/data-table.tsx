@@ -35,6 +35,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { DeleteNote } from "@/notes/actions/delete-note"
+import { AddNote } from "@/notes/actions/add-note"
+
 
 
 
@@ -58,6 +61,7 @@ export const columns: ColumnDef<Note>[] = [
         aria-label="Select all"
       />
     ),
+
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
@@ -105,10 +109,21 @@ export const columns: ColumnDef<Note>[] = [
       return <div className="text-right">{row.getValue("updated_at")}</div>
     },
   },
+  {
+    id: "delete",
+    header: () => <div className="text-right">Actions</div>,
+    cell: ({ row }) => {
+      return (
+        <div className="text-right">
+          <DeleteNote noteId={row.getValue("id")} />
+        </div>
+      )
+    },
+  },
 ]
 
 export  function DataTable({ data }: { data: Note[]}) {
-    console.log("DataTable data:", data); // Debugging line to check the data being passed
+    console.log("DataTable data:", data);
   const [sorting, setSorting] = React.useState<SortingState>([])
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -173,6 +188,7 @@ export  function DataTable({ data }: { data: Note[]}) {
               })}
           </DropdownMenuContent>
         </DropdownMenu>
+        <AddNote />
       </div>
       <div className="overflow-hidden rounded-md border">
         <Table>
