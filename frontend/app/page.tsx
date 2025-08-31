@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-
+  console.log(window.location)
   let [error, setError] = useState<string | null>(null);
   let [companyName, setCompanyName] = useState<string | null>(null);
 
@@ -33,7 +33,7 @@ export default function Home() {
   }
   useEffect(() => {
     if (companyName) {
-      const targetUrl = `http://${companyName}.localhost:3000/signin`;
+      const targetUrl = `http://${companyName}.${window.location.host}/login`;
       router.push(targetUrl);
     }
   }, [companyName]);
