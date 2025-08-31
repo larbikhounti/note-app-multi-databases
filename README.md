@@ -6,6 +6,29 @@ note app separated  by databases aka (multi-tenancy)
 [x] : user login
 [x] : note update / delete / create / fetch 
 
+## app story 
+
+1 - user create company by provider name and email
+
+2 - the system will create a dedicated database for the company
+
+3 - the system will create users and notes by default for testing
+
+4 = you will redirected to the subdomain for you company
+
+5 - you will be asked to login with one of the users 
+
+```bash
+email : user1@local.test
+password : password
+
+email : user2@local.test
+password : password
+```
+6 - after successful login you will be redirected to the notes that are related to your company
+
+7 - edit , update , create notes as you like 
+
 ## installation 
 
 ### starting backend server and database 
@@ -70,9 +93,18 @@ FLUSH PRIVILEGES;
 
 ## what have to be done in the future
 
-[] - user register
-[] - stoping users from navigating to random subdomains in the front end 
-[] - add more typing 
-[] - adding the front end to docker 
-[] - better error messages
-[] - better error alerts
+[ ] - user register
+
+[ ] - stoping users from navigating to random subdomains in the front end 
+
+[ ] - add more typing 
+
+[ ] - adding the front end to docker 
+
+[ ] - better error messages
+
+[ ] - better error alerts
+
+[ ] - better conditions
+
+[ ] - better user experience
