@@ -1,14 +1,30 @@
 import axios from "axios";
 
+const createDynamicInstance = () => {
+    if (typeof window !== 'undefined') {
+        // Get current hostname including subdomain
+        const currentHost = window.location.hostname;
+        const protocol = window.location.protocol;
+        
+        return axios.create({
+            baseURL: `${protocol}//${currentHost}/api`
+        });
+    }
+    
+    // Fallback for SSR
+    return axios.create({
+        baseURL: '/api'
+    });
+};
 
+// Create instance dynamically each time
+export const getInstance = () => createDynamicInstance();
+console.log(getInstance());
 
-const instance = axios.create({
-  baseURL: 'http://laravel.test/api'
-});
+// Or create functions that use dynamic instance
+const fetcher = (url: string) => getInstance().get(url).then(res => res).catch(err => err.response.data)
+const poster = async (url: string, data: any) => getInstance().post(url, data).then(res => res).catch(err => err.response.data)
+const putter = (url: string, data: any) => getInstance().put(url, data).then(res => res).catch(err => err.response.data)
+const deleter = (url: string) => getInstance().delete(url).then(res => res).catch(err => err.response.data)
 
-const fetcher = (url: string) => instance.get(url).then(res => res).catch(err => err.response.data)
-const poster = async (url: string, data: any) => instance.post(url, data).then(res => res).catch(err => err.response.data)
-const putter = (url: string, data: any) => instance.put(url, data).then(res => res).catch(err => err.response.data)
-const deleter = (url: string) => instance.delete(url).then(res => res).catch(err => err.response.data)
-
-export { instance, fetcher, poster, putter, deleter };
+export { fetcher, poster, putter, deleter };
