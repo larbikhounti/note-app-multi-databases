@@ -1,10 +1,21 @@
-## laravel Sail 
+## note app
 note app separated  by databases aka (multi-tenancy)
 
 [x] : create company
+
 [x] : auto seed users
+
 [x] : user login
+
 [x] : note update / delete / create / fetch 
+
+## Tech Stack 
+
+- **Backend**: Laravel 12
+- **Frontend**: nextjs (React.js)
+- **Authentication**: Laravel Sanctum
+- **Multi-Tenancy Strategy**:
+    - package [stancl/tenancy](https://tenancyforlaravel.com) for subdomain-based tenancy
 
 ## app story 
 
